@@ -5,7 +5,7 @@ const WorkingDay = models.WorkingDay;
 
 
     // Company.create({
-    //     name: "New company id 2"
+    //     name: "My-company-id-2"
     // })
     // .then((newCompany) => {
     //     // The get() function allows you to recover only the DataValues of the object
@@ -26,7 +26,8 @@ const WorkingDay = models.WorkingDay;
 
     // User.bulkCreate([
     //     {email: 'mohib@gmial.com', firstName: 'Mohibur',  lastName: 'Rahman', companyId: 1},
-    //     {email: 'log_w@domain.com', firstName: 'Logan',  lastName: 'WOLVERINE', companyId: 1},
+    //     {email: 'murad@gmial.com', firstName: 'Murad',  lastName: 'Mojumder', companyId: 2},
+    //     {email: 'log_w@domain.com', firstName: 'Logan',  lastName: 'WOLVERINE', companyId: 2},
     //     {email: 'john-connor@domain.com', firstName: 'John',  lastName: 'CONNOR', companyId: 1}
     // ])
     // .then((newUsers) => {
