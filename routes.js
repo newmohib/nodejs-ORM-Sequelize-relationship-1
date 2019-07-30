@@ -6,13 +6,16 @@ var cors = require('cors');
 var router = express.Router();
 router.use(cors())
 //var helloMiddlewares = require('./helpers/middlewares');
-//var loginController = require('./controllers/loginController');
+var employesController = require('./controllers/employesController');
 //
 
 
 //router
+router.post('/findOneUser', employesController.findOneUser);
+router.post('/findOneCompany', employesController.findOneCompany);
 
-//router.post('/login', loginController.login);
+
+
 
 
 module.exports = router;

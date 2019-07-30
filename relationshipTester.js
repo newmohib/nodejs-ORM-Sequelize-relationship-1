@@ -5,7 +5,7 @@ const WorkingDay = models.WorkingDay;
 
 
     // Company.create({
-    //     name: "My company"
+    //     name: "New company id 2"
     // })
     // .then((newCompany) => {
     //     // The get() function allows you to recover only the DataValues of the object
@@ -84,20 +84,19 @@ const WorkingDay = models.WorkingDay;
 // 1:1
 // Get the company linked to a given User
 
-    User.findOne({
-        where: {email: 'john-connor@domain.com'}, include: 'company'
-    })
-    .then((findedUser) => {
-        // Get the User with Company datas included
-        console.log("findedUser",findedUser)
-        // Get the company record only
-         //console.log(findedUser.get().company)
-    })
-    .catch((err) => {
-        console.log("Error while find user : ", err)
-    })
+    // User.findOne({
+    //     where: {email: 'john-connor@domain.com'}, include: 'company'
+    // })
+    // .then((findedUser) => {
+    //     // Get the User with Company datas included
+    //     console.log("findedUser",findedUser)
+    //     // Get the company record only
+    //     console.log("compa",findedUser.get().company)
+    // })
+    // .catch((err) => {
+    //     console.log("Error while find user : ", err)
+    // })
   
-
 
 
 
