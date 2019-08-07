@@ -2,6 +2,7 @@ const models = require('../models');
 const User = models.User;
 const Company = models.Company;
 const WorkingDay = models.WorkingDay;
+const UsersWorkingDay = models.UsersWorkingDay;
 
 
 
@@ -32,10 +33,6 @@ module.exports = {
     findOneCompany(req, res) {
         Company.findByPk(2, { include: ['employes'] })
             .then((company) => {
-                // Get the Company with Users (employes) datas included
-                // Get the Users (employes) records only
-                // console.log(company)
-                // console.log(company.get().employes)
                 res.status(200).json(company);
             })
             .catch((err) => {
@@ -44,13 +41,88 @@ module.exports = {
             })
     },
     findOneWorkingDay(req, res) {
-        WorkingDay.findByPk(2, { include: ['employes'] })
-            .then((company) => {
-                // Get the Company with Users (employes) datas included
-                // Get the Users (employes) records only
-                // console.log(company)
-                // console.log(company.get().employes)
-                res.status(200).json(company);
+        UsersWorkingDay.findByPk(2,{
+            include: [
+                //'user', 'workingDay'
+                { model: models.User,where:{id:1}}
+            ]
+        })
+            .then((result) => {
+                res.status(200).json(result);
+            })
+            .catch((err) => {
+                console.log("Error while find company : ", err);
+                res.status(500).json(err);
+            })
+    },
+    findOneWorkingDayAll(req, res) {
+        UsersWorkingDay.findAll({
+            where:{userId:1},
+            include: [
+                //'user', 'workingDay'
+                { 
+                    model: models.User
+                   // where:{id:1}
+                }
+            ]
+        })
+            .then((result) => {
+                res.status(200).json(result);
+            })
+            .catch((err) => {
+                console.log("Error while find company : ", err);
+                res.status(500).json(err);
+            })
+    },
+    findOneWorkingDayOne(req, res) {
+        //console.log(req.body);
+        UsersWorkingDay.findOne({
+            include: [
+                //'user', 'workingDay'
+                { model: models.User,where:{id:1}}
+            ]
+        })
+            .then((result) => {
+                res.status(200).json(result);
+            })
+            .catch((err) => {
+                console.log("Error while find company : ", err);
+                res.status(500).json(err);
+            })
+    },
+    create(req, res) {
+        let { email, firstName, lastName, companyId } = req.body
+        User.create(
+            {
+                email: email,
+                firstName: firstName,
+                lastName: lastName,
+                companyId: companyId,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            }
+        )
+            .then((result) => {
+                res.status(200).json(result);
+            })
+            .catch((err) => {
+                console.log("Error while find company : ", err);
+                res.status(500).json(err);
+            })
+    },
+    findAllUser(req, res) {
+        User.findAll({
+            where:{id:1},
+            include: [
+                //'user', 'workingDay'
+                { 
+                    model: models.WorkingDay
+                   // where:{id:1}
+                }
+            ]
+        })
+            .then((result) => {
+                res.status(200).json(result);
             })
             .catch((err) => {
                 console.log("Error while find company : ", err);

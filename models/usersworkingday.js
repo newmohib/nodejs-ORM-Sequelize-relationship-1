@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   UsersWorkingDay.associate = function(models) {
     UsersWorkingDay.belongsTo(models.User, {foreignKey: 'userId'});
+   // UsersWorkingDay.belongsTo(models.WorkingDay, {foreignKey: 'workingDayId',as: 'workingDay'});
     UsersWorkingDay.belongsTo(models.WorkingDay, {foreignKey: 'workingDayId'});
   };
   return UsersWorkingDay;
